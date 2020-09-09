@@ -99,7 +99,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -108,7 +108,6 @@
 				OBJ_11 /* Dependencies */,
 				OBJ_18 /* Products */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -146,6 +145,8 @@
 				OBJ_29 /* PBXTargetDependency */,
 			);
 			name = Raptor;
+			packageProductDependencies = (
+			);
 			productName = Raptor;
 			productReference = "Raptor::Raptor::Product" /* Raptor.framework */;
 			productType = "com.apple.product-type.framework";
@@ -207,9 +208,12 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
+			packageReferences = (
+			);
 			productRefGroup = OBJ_18 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

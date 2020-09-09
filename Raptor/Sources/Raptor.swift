@@ -30,21 +30,21 @@ public class Raptor {
         socket.close()
     }
     
-    public func sendCommand(_ command: String) throws {
-        try write(.serverCommand, message: command)
+    public func sendCommand(_ command: String) throws -> Data {
+        return try write(.serverCommand, message: command)
     }
     
     @discardableResult private func write(_ type: MessageType, message: String) throws -> Data {
         guard let messageData = message.data(using: .ascii, allowLossyConversion: true).map(Array.init) else {
             throw ClientError.unserializableCommand
         }
-        try socket.write(from: Data()
-            .appending(UInt32(message.count + 10).bytes)
-            .appending(currentPacketID.bytes)
-            .appending(type.rawValue.bytes)
-            .appending(messageData)
-            .appending([0, 0])
-        )
+        try socket.write(from: Data(bytes:
+            UInt32(message.count + 10).bytes +
+                currentPacketID.bytes +
+                type.rawValue.bytes +
+                messageData +
+                [0, 0]
+        ))
         currentPacketID += 1
         return try socket.read()
     }
